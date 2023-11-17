@@ -5,3 +5,5 @@ const API = {
     return await res.json()
   },
 }
+
+export default API
