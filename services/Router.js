@@ -16,6 +16,24 @@ const Router = {
     if (addToHisotry) {
       history.pushState({ route }, "", route)
     }
+    let pageElement = null
+    switch (route) {
+      case "/":
+        pageElement = document.createElement("h1")
+        pageElement.textContent = "Menu"
+        break
+      case "/order":
+        pageElement = document.createElement("h1")
+        pageElement.textContent = "Your order"
+        break
+    }
+    if (pageElement) {
+      const cache = document.querySelector("main")
+      cache.innerHTML = ""
+      cache.appendChild(pageElement)
+      window.scrollX = 0
+      window.scrollY = 0
+    }
   },
 }
 
