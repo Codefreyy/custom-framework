@@ -10,24 +10,23 @@ const Router = {
       })
     })
     // Event handler for url changes (such as the use click baco or forward arrow)
-    window.addEventListener("popstate", (event) => {
-      console.log("state", event.state)
-      Router.go(event.state.route, false)
+    window.addEventListener("hashchange", (event) => {
+      Router.go(location.hash.slice(1), false)
     })
     // Check the inital URL (if the user use a deep link at first)
-    Router.go(location.pathname)
+    Router.go(location.hash.slice(1))
   },
   go: (route, addToHisotry = true) => {
     console.log(`Going to ${route}`)
     if (addToHisotry) {
       // history.pushState() is used to add new state to browser history and change current url
-      history.pushState({ route }, "", route)
+      // history.pushState({ route }, "", route)
+      location.hash = route
     }
 
     let pageElement = null
     switch (route) {
       case "/":
-        console.log(1, route)
         pageElement = document.createElement("menu-page")
         break
       case "/order":

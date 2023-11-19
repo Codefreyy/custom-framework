@@ -13,8 +13,8 @@ app.router = Router
 
 // Better to wait for the event for manipulation
 window.addEventListener("DOMContentLoaded", async () => {
-  loadData()
   app.router.init()
+  loadData()
 })
 
 console.log(app.store)
