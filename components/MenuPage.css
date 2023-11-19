@@ -53,6 +53,10 @@ article section {
   display: flex;
 }
 
+article button {
+  cursor: pointer;
+}
+
 h4 {
   margin: 8px 0 0 12px;
   color: #333d29;
