@@ -1,3 +1,5 @@
+import { addToCard } from "../services/Order.js"
+
 export default class ProductItem extends HTMLElement {
   constructor() {
     super()
@@ -19,6 +21,7 @@ export default class ProductItem extends HTMLElement {
       // differentiate the button and img, click "button" add product to cart, click "img" go to the product detail
       if (event.target.tagName.toLowerCase() == "button") {
         //TODO
+        addToCard(product.id)
       } else {
         app.router.go(`/product-${product.id}`)
       }
