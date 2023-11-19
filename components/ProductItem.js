@@ -15,6 +15,8 @@ export default class ProductItem extends HTMLElement {
     this.querySelector("img").src = `data/images/${product.image}`
     this.querySelector("a").addEventListener("click", (event) => {
       console.log(event.target.tagName)
+
+      // differentiate the button and img, click "button" add product to cart, click "img" go to the product detail
       if (event.target.tagName.toLowerCase() == "button") {
         //TODO
       } else {

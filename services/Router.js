@@ -37,7 +37,7 @@ const Router = {
         if (route.startsWith("/product-")) {
           pageElement = document.createElement("details-page")
           const paramId = route.substring(route.lastIndexOf("-") + 1) // substring [a,b)
-          pageElement.dataset.id = paramId
+          pageElement.dataset.productId = paramId
         } else {
           pageElement.textContent = "404 - Page not found"
         }
