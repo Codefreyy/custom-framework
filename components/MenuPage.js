@@ -4,6 +4,17 @@ export class MenuPage extends HTMLElement {
     // if you want to outside to access your inner dom or not
     // this.root = this.attachShadow({ mode: "open" })
     this.attachShadow({ mode: "open" })
+
+    const styles = document.createElement("style")
+    this.shadowRoot.appendChild(styles)
+
+    const loadCSS = async () => {
+      const request = await fetch("/components/MenuPage.css")
+      // convert it into text to put into textContent
+      const css = await request.text()
+      styles.textContent = css
+    }
+    loadCSS()
   }
 
   // connectCallback is a lifecycle method, it is runned when element was insert into the document tree
