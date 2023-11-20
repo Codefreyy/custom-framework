@@ -1,4 +1,11 @@
 export class OrderPage extends HTMLElement {
+  // # - private property
+  #user = {
+    name: "",
+    phone: "",
+    email: "",
+  }
+
   constructor() {
     super()
     this.root = this.attachShadow({ mode: "open" })
@@ -56,6 +63,30 @@ export class OrderPage extends HTMLElement {
       </li>                
     `
     }
+
+    this.setFormBindings(this.root.querySelector("form"))
+  }
+
+  setFormBindings(form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault()
+      alert(`Thank you for your rder ${this.#user.name}.`)
+      this.#user.name = ""
+      this.#user.email = ""
+      this.#user.phone = ""
+    })
+
+    Array.from(form.elements).forEach((ele) =>
+      ele.addEventListener("change", (e) => (this.#user[ele.name] = ele.value))
+    )
+
+    this.#user = new Proxy(this.#user, {
+      set(target, property, value) {
+        target[property] = value
+        form.elements[property].value = value
+        return true
+      },
+    })
   }
 }
 
