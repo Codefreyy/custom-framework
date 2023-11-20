@@ -6,6 +6,7 @@ import { MenuPage } from "./components/MenuPage.js"
 import { OrderPage } from "./components/OrderPage.js"
 import { DetailsPage } from "./components/DetailsPage.js"
 import ProductItem from "./components/ProductItem.js"
+import CartItem from "./components/CartItem.js"
 
 window.app = {}
 app.store = Store
@@ -23,5 +24,3 @@ window.addEventListener("appcartchange", (event) => {
   badge.textContent = qty
   badge.hidden = qty === 0
 })
-
-console.log(app.store)

@@ -5,28 +5,29 @@ const Router = {
       a.addEventListener("click", (event) => {
         event.preventDefault()
         const url = event.target.getAttribute("href")
-        // Router.go() is used to navigate to specific route
         Router.go(url)
       })
     })
     // Event handler for url changes (such as the use click baco or forward arrow)
-    window.addEventListener("hashchange", (event) => {
-      Router.go(location.hash.slice(1), false)
+    window.addEventListener("popstate", (event) => {
+      Router.go(event.state.route, false)
     })
     // Check the inital URL (if the user use a deep link at first)
-    Router.go(location.hash.slice(1))
+    Router.go(location.pathname)
   },
   go: (route, addToHisotry = true) => {
     console.log(`Going to ${route}`)
     if (addToHisotry) {
       // history.pushState() is used to add new state to browser history and change current url
-      // history.pushState({ route }, "", route)
-      location.hash = route
+      history.pushState({ route }, "", route)
     }
 
     let pageElement = null
     switch (route) {
       case "/":
+        pageElement = document.createElement("menu-page")
+        break
+      case "/index.html":
         pageElement = document.createElement("menu-page")
         break
       case "/order":

@@ -1,5 +1,13 @@
 import { getProductById } from "./Menu.js"
 
+export function placeOrder() {
+  // actucally need to use api
+  alert(
+    "Your order will be ready under the number " + parseInt(Math.random() * 100)
+  )
+  app.store.menu = []
+}
+
 export async function addToCard(id) {
   const product = await getProductById(id)
   const result = app.store.cart.filter(
@@ -17,5 +25,10 @@ export async function addToCard(id) {
 }
 
 export async function removeFromCart(id) {
-  app.store.cart = app.store.cart.filter((product) => product.id !== id)
+  console.log(app.store.cart)
+  app.store.cart = app.store.cart.filter((product) => {
+    debugger
+    return product.product.id != id
+  })
+  console.log(app.store.cart)
 }
