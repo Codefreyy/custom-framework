@@ -1,0 +1,1 @@
+Build a web app without depending on libraries or frameworks, using only the core JavaScript language. Explore advanced topics like SPA routing, web components and shadow DOM, and reactive programming with proxies.
